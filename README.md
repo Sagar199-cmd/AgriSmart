@@ -1,142 +1,197 @@
-# AgriSmart: AI-Powered Potato Crop Growth & Nutrient Management
-
-AgriSmart is a Python-based project that uses *Sentinel-2 satellite imagery* to analyze potato crop fields. It performs the following tasks:
-
-1. Computes vegetation indices such as *NDVI* and *NDRE*.
-2. Generates *RGB composite images*.
-3. Classifies *growth stages* of potato crops.
-4. Maps *nutrient health zones* to optimize fertilization and irrigation.
+# AI-Powered Potato Crop Growth Stage & Nutrient Health Management
 
 
+## Project Description
+This project develops an AI-powered solution that uses satellite imagery and machine learning to monitor potato crop growth stages and assess nutrient health. By integrating geospatial analytics, CNN-based classification, and Random Forest regression, the system generates stage-specific irrigation and fertilizer recommendations.
 
-## Project Structure
-
-```
-
-AgriSmart/
-│
-├── notebooks/
-│ ├── IMG_DATA/
-│ │ ├── R10m/
-│ │ ├── R20m/
-│ │ └── R60m/
-│ │
-│ ├── outputs/
-│ │ ├── Growth_Stages.png
-│ │ ├── NDRE.png
-│ │ ├── NDVI.png
-│ │ └── RGB_composite.png
-│ │
-│ ├── 01_read_visualize.ipynb
-│ ├── 02_compute_indices.ipynb
-│ └── 03_growth_stage_classification.ipynb
-│
-├── src/
-│ ├── read_band.py
-│ ├── compute_indices.py
-│ ├── classify_growth_stage.py
-│ ├── nutrient_mapping.py
-│ └── utils.py
-│
-└── environment.yml
+The platform is designed to be scalable, cost-effective, and farmer-centric, with the ultimate goal of maximizing yield, reducing costs, and promoting sustainable soil health.
 
 
-```
-
-## ⚙ Setup Instructions
-
-1. *Clone the repository* (or download the folder):
-   ```bash
-   git clone <repository_url>
-   cd AgriSmart
-Create the conda environment:
-
-bash
-Copy code
-conda env create -f environment.yml
-conda activate s2env
-Install additional packages (if needed):
-
-bash
-Copy code
-pip install rasterio numpy matplotlib
 
 
-## ⚙ Notebooks Overview
-
-01_read_visualize.ipynb
-
-Reads Sentinel-2 bands (.jp2 files).
-
-Creates RGB composite images.
-
-Saves output in notebooks/outputs/.
-
-02_compute_indices.ipynb
-
-Computes NDVI (Normalized Difference Vegetation Index).
-
-Computes NDRE (Normalized Difference Red Edge Index).
-
-Saves index maps as PNG.
-
-03_growth_stage_classification.ipynb
-
-Classifies potato crop growth stages using NDVI thresholds.
-
-Generates color-coded growth stage maps (Early, Mid, Late).
-
-## ⚙ Source Code (src/)
-
-read_band.py – Functions to read and resample Sentinel-2 bands.
-
-compute_indices.py – NDVI & NDRE computation.
-
-classify_growth_stage.py – Growth stage classification and visualization.
-
-nutrient_mapping.py – Map nutrient health zones using NDVI/NDRE.
-
-utils.py – Helper functions for file handling and plotting.
-
-## ⚙ Usage
-
-Open the notebooks in Jupyter:
-```
-
-01_read_visualize.ipynb → generates RGB composite.
-
-02_compute_indices.ipynb → generates NDVI & NDRE maps.
-
-03_growth_stage_classification.ipynb → generates growth stage maps.
-
-```
-
-## ⚙ Output
 
 
-RGB_composite.png – True color satellite view.
+## Problem Statement
 
-NDVI.png – Vegetation index map.
+Potato farmers in Tamil Nadu face the following persistent challenges that reduce productivity and profitability:
 
-NDRE.png – Nutrient stress map.
+Unreliable crop growth stage monitoring due to reliance on manual scouting.
 
-Growth_Stages.png – Growth stage classification map.
+Cloud cover and irregular field monitoring leading to gaps in health assessment.
 
-## ⚙ Requirements
-Python 3.10+
+Inefficient nutrient management causing over-fertilization or under-fertilization.
 
-Conda environment (s2env)
+Increased vulnerability to pests and diseases without early-warning systems.
 
-Libraries: rasterio, numpy, matplotlib, scipy
+Limited access to affordable precision agriculture solutions tailored to regional needs.
 
-Notes
-Make sure all .jp2 files from Sentinel-2 are placed under notebooks/IMG_DATA/ in their respective resolutions (R10m, R20m, R60m).
+These factors directly affect yield, income stability, and long-term soil quality.
 
-Paths in notebooks are set relative to the notebooks/ directory.
 
-License
-This project is open-source and free to use for educational and research purposes.
+## Why It Matters
+
+Considering that India is the second largest potato - producing country in the world as of 2025, even a 10% yield improvement (~9,000 tonnes) in Tamil Nadu's potato production could generate an estimated ₹1 crore in additional farm-gate revenue. Optimizing growth stage interventions and nutrient management is not only a matter of food security but a path to economic transformation for farming communities.
+
+## Methodology
+
+Data Acquisition
+
+Sentinel-2 satellite imagery (10m/20m resolution).
+
+Vegetation indices (NDVI, NDRE).
+
+Soil fertility datasets.
+
+Historical yield and weather data for refinement.
+
+Preprocessing
+
+Cloud masking to remove unusable pixels.
+
+Image mosaicing for seamless field views.
+
+Normalization and extraction of vegetation indices.
+
+
+
+## AI/ML Modeling
+
+
+Convolutional Neural Networks (CNNs): Crop growth stage classification into at least three stages.
+
+Random Forest Regression: Prediction of nitrogen levels and mapping of nutrient health.
+
+Fertility-Based Zoning
+
+Field segmentation into high, medium, and low-fertility zones.
+
+Integration with crop stage data for precise recommendations.
+
+Decision Intelligence Layer (MCP + Agentic AI)
+
+Model Control Program (MCP) connects classification and nutrient modules.
+
+Agentic AI generates actionable recommendations: stage-specific irrigation and fertilizer planning.
+
+
+## Tech Stack
+
+Geospatial Tools: Google Earth Engine, Rasterio, GDAL, QGIS.
+
+AI/ML Models: CNN for growth stage classification, Random Forest/Gradient Boosting for nutrient prediction.
+
+Pipeline Orchestration: MCP for model integration and workflow scheduling.
+
+Agentic AI Layer: Generates zone-wise, stage-specific advisories.
+
+Farmer Application: Web and mobile dashboards with visualization and notifications.
+
+
+## Key Features
+
+Automated weekly satellite image processing pipeline.
+
+Growth stage classification across potato lifecycle.
+
+Nutrient health monitoring and fertility-based zoning.
+
+Cost-optimized irrigation and fertilizer recommendations.
+
+Farmer-facing dashboards for visualization and alerts.
+
+
+## Impact
+
+Visionary impact: Supports food security and productivity at scale.
+
+Tech innovation: Converts raw geospatial data into actionable decisions.
+
+Farmer value: Provides simple, intuitive insights for better decision-making.
+
+Sustainability: Protects soil health and promotes resource-efficient farming.
+
+
+
+## Future Scope
+
+Expand to other crops beyond potato.
+
+Integration with IoT-based soil sensors for hybrid data fusion.
+
+Advanced pest/disease detection using hyperspectral imaging.
+
+State-wise farmer community platforms for knowledge sharing.
+
+
+## PipeLine Workflow
+
+<img src="pipeline_workflow.jpg" alt="Screenshot18" width="600" height="600"/>
+
+
+
+
 
 
 ---
+
+
+
+
+## App Screenshots
+
+### Home & Dashboard
+<img src="Screenshots/Screenshot_20250905_101249.png" alt="Screenshot1" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_101353.png" alt="Screenshot2" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_103503.png" alt="Screenshot3" width="300" height="600"/>
+<!-- Repeat for all remaining screenshots -->
+<img src="Screenshots/Screenshot_20250905_103516.png" alt="Screenshot17" width="300" height="600"/>
+
+<img src="Screenshots/Screenshot_20250905_093205.png" alt="Screenshot18" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_093212.png" alt="Screenshot19" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_093217.png" alt="Screenshot20" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_103621.png" alt="Screenshot21" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_103629.png" alt="Screenshot22" width="300" height="600"/>
+
+<img src="Screenshots/Screenshot_20250905_103647.png" alt="Screenshot23" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_103713.png" alt="Screenshot24" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_103722.png" alt="Screenshot25" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_103816.png" alt="Screenshot26" width="300" height="600"/>
+
+<img src="Screenshots/Screenshot_20250905_103751.png" alt="Screenshot27" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_103731.png" alt="Screenshot28" width="300" height="600"/>
+<img src="Screenshots/Screenshot_20250905_103823.png" alt="Screenshot29" width="300" height="600"/>
+
+---
+
+### Website Screenshots
+<img src="Website-Screenshot/Screenshot 2025-09-05 111833.png" alt="Website1" width="600" height="600"/>
+<img src="Website-Screenshot/Screenshot 2025-09-05 111844.png" alt="Website2" width="600" height="600"/>
+<img src="Website-Screenshot/Screenshot 2025-09-05 111916.png" alt="Website2" width="600" height="600"/>
+<img src="Website-Screenshot/Screenshot 2025-09-05 111935.png" alt="Website2" width="600" height="600"/>
+<img src="Website-Screenshot/Screenshot 2025-09-05 111950.png" alt="Website2" width="600" height="600"/>
+<img src="Website-Screenshot/Screenshot 2025-09-05 111959.png" alt="Website2" width="600" height="600"/>
+<img src="Website-Screenshot/Screenshot 2025-09-05 112007.png" alt="Website2" width="600" height="600"/>
+<img src="Website-Screenshot/Screenshot 2025-09-05 112031.png" alt="Website2" width="600" height="600"/>
+<img src="Website-Screenshot/Screenshot 2025-09-05 112043.png" alt="Website2" width="600" height="600"/>
+
+
+
+<!-- Add more if needed -->
+
+---
+
+
+## ML Model Screenshots
+
+<img src="ML-Screenshot/endpoints.png" alt="Website2" width="600" height="600"/>
+<img src="ML-Screenshot/get-request.png" alt="Website2" width="600" height="600"/>
+<img src="ML-Screenshot/image-result.png" alt="Website2" width="600" height="600"/>
+<img src="ML-Screenshot/ml-predict.png" alt="Website2" width="600" height="600"/>
+<img src="ML-Screenshot/ml-predict2.png" alt="Website2" width="600" height="600"/>
+
+
+<!-- Add more ML screenshots -->
+
+---
+
 
